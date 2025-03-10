@@ -1,6 +1,6 @@
 
 
-# include "../cub3d.h"
+#include "cub3d.h"
 
 int	is_a_white_space(char c)
 {

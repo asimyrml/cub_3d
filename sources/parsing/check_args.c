@@ -1,6 +1,6 @@
 
 
-# include "../cub3d.h"
+#include "cub3d.h"
 
 /*
 **	Checks whether the arg given is a correct .cub extension, checks that

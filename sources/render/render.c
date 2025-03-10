@@ -1,6 +1,6 @@
 
 
-# include "../cub3d.h"
+#include "cub3d.h"
 
 static void	set_frame_image_pixel(t_data *data, t_img *image, int x, int y)
 {

@@ -1,6 +1,6 @@
 
 
-# include "../cub3d.h"
+#include "cub3d.h"
 
 void	debug_print_char_tab(char **tab)
 {

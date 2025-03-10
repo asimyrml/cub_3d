@@ -1,6 +1,6 @@
 
 
-# include "../cub3d.h"
+#include "cub3d.h"
 
 static char	*get_texture_path(char *line, int j)
 {

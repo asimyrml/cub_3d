@@ -1,6 +1,6 @@
 
 
-# include "../cub3d.h"
+#include "cub3d.h"
 
 static void	set_minimap_tile_pixels(t_minimap *minimap, int x, int y, int color)
 {

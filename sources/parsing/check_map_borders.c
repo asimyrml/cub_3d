@@ -1,6 +1,6 @@
 
 
-# include "../cub3d.h"
+#include "cub3d.h"
 
 static int	check_top_or_bottom(char **map_tab, int i, int j)
 {

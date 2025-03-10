@@ -16,7 +16,7 @@ MLX_NAME	= libmlx.a
 MLX			= $(MLX_PATH)$(MLX_NAME)
 
 # Libft
-LIBFT_PATH	= libft/
+LIBFT_PATH	= lib/libft/
 LIBFT_NAME	= libft.a
 LIBFT		= $(LIBFT_PATH)$(LIBFT_NAME)
 
@@ -58,7 +58,7 @@ OBJ			= $(SRC:.c=.o)
 OBJS		= $(addprefix $(OBJ_PATH), $(OBJ))
 
 # Includes
-INC			=	-I ./includes/\
+INC			=	-I ./headers/\
 				-I ./libft/\
 				-I ./minilibx-linux/
 

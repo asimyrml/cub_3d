@@ -1,6 +1,6 @@
 
 
-# include "../cub3d.h"
+#include "cub3d.h"
 
 static int	check_map_elements(t_data *data, char **map_tab)
 {

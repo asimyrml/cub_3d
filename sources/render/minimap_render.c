@@ -1,6 +1,6 @@
 
 
-# include "../cub3d.h"
+#include "cub3d.h"
 
 static int	get_mmap_offset(t_minimap *minimap, int mapsize, int pos)
 {

@@ -1,6 +1,6 @@
 
 
-# include "../cub3d.h"
+#include "cub3d.h"
 
 static int	key_press_handler(int key, t_data *data)
 {

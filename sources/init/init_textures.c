@@ -1,6 +1,6 @@
 
 
-# include "../cub3d.h"
+#include "cub3d.h"
 
 static int	*xpm_to_img(t_data *data, char *path)
 {

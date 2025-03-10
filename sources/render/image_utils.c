@@ -1,5 +1,5 @@
 
-# include "../cub3d.h"
+#include "cub3d.h"
 
 void	set_image_pixel(t_img *image, int x, int y, int color)
 {

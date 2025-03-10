@@ -1,6 +1,6 @@
 
 
-# include "../cub3d.h"
+#include "cub3d.h"
 
 static bool	is_valid_pos_wall_collision(t_data *data, double x, double y)
 {

@@ -1,6 +1,6 @@
 
 
-# include "../cub3d.h"
+#include "cub3d.h"
 
 void	init_texture_pixels(t_data *data)
 {

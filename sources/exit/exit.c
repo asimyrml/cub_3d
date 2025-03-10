@@ -1,6 +1,6 @@
 
 
-# include "../cub3d.h"
+#include "cub3d.h"
 
 void	clean_exit(t_data *data, int code)
 {

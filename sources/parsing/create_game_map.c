@@ -1,6 +1,6 @@
 
 
-# include "../cub3d.h"
+#include "cub3d.h"
 
 static int	count_map_lines(t_data *data, char **file, int i)
 {
