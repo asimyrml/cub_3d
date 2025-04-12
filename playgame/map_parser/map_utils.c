@@ -6,7 +6,7 @@
 /*   By: ayirmili <ayirmili@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 12:14:11 by kgulfida          #+#    #+#             */
-/*   Updated: 2025/04/12 19:46:18 by ayirmili         ###   ########.fr       */
+/*   Updated: 2025/04/12 20:02:38 by ayirmili         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,12 @@ int	check_c(char *line)
 
 void	is_map_closed(t_data *data)
 {
-	first_last_line(data);
-	under_space(data, -1, data->map->row);
-	above_space(data, (data->map->row - 1));
-	left_space(data, -1);
-	right_space(data, -1);
-	check_all_field(data, -1);
+	check_map_edges(data);
+	check_under_space(data, -1, data->map->row);
+	check_above_space(data, (data->map->row - 1));
+	check_left_space(data, -1);
+	check_right_space(data, -1);
+	check_fields(data, -1);
 }
 
 void	process_line(char *line, t_data *data, int fd)

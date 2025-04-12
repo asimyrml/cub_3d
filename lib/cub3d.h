@@ -6,7 +6,7 @@
 /*   By: ayirmili <ayirmili@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 18:04:30 by ayirmili          #+#    #+#             */
-/*   Updated: 2025/04/12 19:49:24 by ayirmili         ###   ########.fr       */
+/*   Updated: 2025/04/12 20:13:42 by ayirmili         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,17 +142,17 @@ void				map_check(char *av, t_data *data, char *line,
 						char *trimmed);
 int					check_c(char *line);
 void				char_check(t_data *data);
-void				around_check(t_data *data, int i, int j);
-void				player_around_check(t_data *data, int i, int j);
-void				check_all_field(t_data *data, int i);
+void				bounds_check(t_data *data, int i, int j);
+void				check_player_bounds(t_data *data, int i, int j);
+void				check_fields(t_data *data, int i);
 void				flood_fill(int x, int y, t_data *data);
-void				flood_fill_check(t_data *data);
+void				check_floodfill(t_data *data);
 void				is_map_closed(t_data *data);
-void				first_last_line(t_data *data);
-void				above_space(t_data *data, int map_row);
-void				under_space(t_data *data, int i, int row);
-void				right_space(t_data *data, int i);
-void				left_space(t_data *data, int i);
+void				check_map_edges(t_data *data);
+void				check_above_space(t_data *data, int map_row);
+void				check_under_space(t_data *data, int i, int row);
+void				check_right_space(t_data *data, int i);
+void				check_left_space(t_data *data, int i);
 
 void				start_game(t_data *data);
 int					put_image(t_data *data);

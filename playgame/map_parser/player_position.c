@@ -6,7 +6,7 @@
 /*   By: ayirmili <ayirmili@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 12:14:04 by kgulfida          #+#    #+#             */
-/*   Updated: 2025/04/12 18:19:21 by ayirmili         ###   ########.fr       */
+/*   Updated: 2025/04/12 20:12:16 by ayirmili         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	find_player(t_data *data)
 			{
 				data->player->position_x = j + 0.5;
 				data->player->position_y = i + 0.5;
-				player_around_check(data, i, j);
+				check_player_bounds(data, i, j);
 				player_direction(data->map->map[i][j], data);
 			}
 		}

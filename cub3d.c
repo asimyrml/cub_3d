@@ -6,7 +6,7 @@
 /*   By: ayirmili <ayirmili@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 12:06:46 by kgulfida          #+#    #+#             */
-/*   Updated: 2025/04/12 19:37:08 by ayirmili         ###   ########.fr       */
+/*   Updated: 2025/04/12 20:13:42 by ayirmili         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int	main(int ac, char **av)
 	textures_check_2(av[1], &data, 0);
 	map_check(av[1], &data, NULL, NULL);
 	char_check(&data);
-	flood_fill_check(&data);
+	check_floodfill(&data);
 	is_map_closed(&data);
 	start_game(&data);
 	return (0);

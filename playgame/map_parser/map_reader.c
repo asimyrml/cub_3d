@@ -6,30 +6,30 @@
 /*   By: ayirmili <ayirmili@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 15:20:17 by kgulfida          #+#    #+#             */
-/*   Updated: 2025/04/12 19:31:04 by ayirmili         ###   ########.fr       */
+/*   Updated: 2025/04/12 20:13:42 by ayirmili         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../lib/cub3d.h"
 
-void	cpymap(char *av, t_data *data, int map_start)
+void	copy_map(char *av, t_data *data, int map_start)
 {
-	int		i;
-	int		j;
+	int		line_index;
+	int		row_index;
 	int		fd;
 	char	*line;
 
-	i = -1;
+	line_index = -1;
 	fd = open(av, O_RDONLY);
-	while (++i < map_start)
+	while (++line_index < map_start)
 	{
 		line = get_next_line(fd);
 		free(line);
 	}
-	j = -1;
-	while (++j < data->map->row)
-		data->map->clone_map[j] = get_next_line(fd);
-	data->map->clone_map[j] = NULL;
+	row_index = -1;
+	while (++row_index < data->map->row)
+		data->map->clone_map[row_index] = get_next_line(fd);
+	data->map->clone_map[row_index] = NULL;
 	while (1)
 	{
 		line = get_next_line(fd);
@@ -65,10 +65,10 @@ void	map(char *av, t_data *data, int map_start, int i)
 		free(line);
 	}
 	close(fd);
-	cpymap(av, data, map_start);
+	copy_map(av, data, map_start);
 }
 
-int	texture_skip(char **line, char **trimmed, t_data *data, int *i)
+int	skip_texture(char **line, char **trimmed, t_data *data, int *i)
 {
 	if (*trimmed[0] == 'C' || *trimmed[0] == 'S' || *trimmed[0] == 'N'
 		|| *trimmed[0] == 'W' || *trimmed[0] == 'F' || *trimmed[0] == 'E'
@@ -82,20 +82,20 @@ int	texture_skip(char **line, char **trimmed, t_data *data, int *i)
 	return (0);
 }
 
-void	multiple_map_check(int fd, t_data *data)
+void	mltp_map_checker(int fd, t_data *data)
 {
 	char	*line;
-	int		flag;
+	int		flg;
 
-	flag = 0;
+	flg = 0;
 	while (1)
 	{
 		line = get_next_line(fd);
 		if (line == NULL)
 			break ;
 		if (ft_strncmp(line, " ", ft_strlen(line)) != 0 || *line == '\n')
-			flag = 1;
-		if (flag && check_c(line))
+			flg = 1;
+		if (flg && check_c(line))
 			ft_error("Error\nMultiple map.\n", data);
 		free(line);
 	}
@@ -117,7 +117,7 @@ void	map_check(char *av, t_data *data, char *line, char *trimmed)
 		if (line == NULL)
 			break ;
 		trimmed = ft_strtrim(line, " ");
-		if (texture_skip(&line, &trimmed, data, &i))
+		if (skip_texture(&line, &trimmed, data, &i))
 			continue ;
 		if (trimmed[0] == '\n' && data->map->row != 0)
 		{
@@ -129,6 +129,6 @@ void	map_check(char *av, t_data *data, char *line, char *trimmed)
 		free(trimmed);
 		free(line);
 	}
-	multiple_map_check(fd, data);
+	mltp_map_checker(fd, data);
 	map(av, data, i, -1);
 }

@@ -6,13 +6,13 @@
 /*   By: ayirmili <ayirmili@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:08:55 by kgulfida          #+#    #+#             */
-/*   Updated: 2025/04/12 19:29:37 by ayirmili         ###   ########.fr       */
+/*   Updated: 2025/04/12 20:12:16 by ayirmili         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../lib/cub3d.h"
 
-void	flood_fill_check(t_data *data)
+void	check_floodfill(t_data *data)
 {
 	int	i;
 	int	j;
@@ -46,59 +46,59 @@ void	flood_fill(int x, int y, t_data *data)
 	flood_fill(x, y - 1, data);
 }
 
-void	player_around_check(t_data *data, int i, int j)
+void	check_player_bounds(t_data *data, int i, int j)
 {
-	int	flag;
+	int	flg;
 
-	flag = 0;
+	flg = 0;
 	if (i == 0)
 		ft_error("Error\nThe map error.\n", data);
 	if (data->map->map[i - 1] && data->map->map[i - 1][j] && (data->map->map[i
 			- 1][j] == '0' || data->map->map[i - 1][j] == '1'))
-		flag++;
+		flg++;
 	if (data->map->map[i + 1] && data->map->map[i + 1][j] && (data->map->map[i
 			- 1][j] == '0' || data->map->map[i - 1][j] == '1'))
-		flag++;
+		flg++;
 	if (data->map->map[i][j - 1] && (data->map->map[i][j - 1] == '0'
 			|| data->map->map[i][j - 1] == '1'))
-		flag++;
+		flg++;
 	if (data->map->map[i][j + 1] && (data->map->map[i][j + 1] == '0'
 			|| data->map->map[i][j + 1] == '1'))
-		flag++;
-	if (flag < 4)
+		flg++;
+	if (flg < 4)
 		ft_error("Error\nThe map error.\n", data);
 }
 
-void	around_check(t_data *data, int i, int j)
+void	bounds_check(t_data *data, int i, int j)
 {
-	int		flag;
-	char	a;
-	char	b;
-	char	c;
-	char	d;
+	int		valid_count;
+	char	up;
+	char	down;
+	char	left;
+	char	right;
 
-	flag = 0;
-	a = data->map->map[i - 1][j];
-	b = data->map->map[i + 1][j];
-	c = data->map->map[i][j - 1];
-	d = data->map->map[i][j + 1];
-	if (data->map->map[i - 1] && a && (a == '0' || a == '1' || a == 'S'
-			|| a == 'E' || a == 'N' || a == 'W'))
-		flag++;
-	if (data->map->map[i + 1] && b && (b == '0' || b == '1' || b == 'S'
-			|| b == 'N' || b == 'E' || b == 'W'))
-		flag++;
-	if (c && (c == '0' || c == '1' || c == 'N' || c == 'S' || c == 'W'
-			|| c == 'E'))
-		flag++;
-	if (d && (d == '0' || d == '1' || d == 'N' || d == 'W' || d == 'S'
-			|| d == 'E'))
-		flag++;
-	if (flag < 4)
+	valid_count = 0;
+	up = data->map->map[i - 1][j];
+	down = data->map->map[i + 1][j];
+	left = data->map->map[i][j - 1];
+	right = data->map->map[i][j + 1];
+	if (data->map->map[i - 1] && up && (up == '0' || up == '1'
+			|| up == 'S' || up == 'E' || up == 'N' || up == 'W'))
+		valid_count++;
+	if (data->map->map[i + 1] && down && (down == '0' || down == '1'
+			|| down == 'S' || down == 'N' || down == 'E' || down == 'W'))
+		valid_count++;
+	if (left && (left == '0' || left == '1' || left == 'N'
+			|| left == 'S' || left == 'W' || left == 'E'))
+		valid_count++;
+	if (right && (right == '0' || right == '1' || right == 'N'
+			|| right == 'W' || right == 'S' || right == 'E'))
+		valid_count++;
+	if (valid_count < 4)
 		ft_error("Error\nThe map error.\n", data);
 }
 
-void	check_all_field(t_data *data, int i)
+void	check_fields(t_data *data, int i)
 {
 	int	j;
 
@@ -108,7 +108,7 @@ void	check_all_field(t_data *data, int i)
 		while (data->map->map[i][j])
 		{
 			if (data->map->map[i][j] == '0')
-				around_check(data, i, j);
+				bounds_check(data, i, j);
 			j++;
 		}
 	}

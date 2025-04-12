@@ -6,13 +6,13 @@
 /*   By: ayirmili <ayirmili@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 14:58:10 by kgulfida          #+#    #+#             */
-/*   Updated: 2025/04/12 18:06:59 by ayirmili         ###   ########.fr       */
+/*   Updated: 2025/04/12 20:16:07 by ayirmili         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../lib/cub3d.h"
 
-void	first_last_line(t_data *data)
+void	check_map_edges(t_data *data)
 {
 	int	i;
 
@@ -37,7 +37,7 @@ void	first_last_line(t_data *data)
 	}
 }
 
-void	above_space(t_data *data, int map_row)
+void	check_above_space(t_data *data, int map_row)
 {
 	int	j;
 	int	ctr;
@@ -66,7 +66,7 @@ void	above_space(t_data *data, int map_row)
 	}
 }
 
-void	under_space(t_data *data, int i, int row)
+void	check_under_space(t_data *data, int i, int row)
 {
 	int	j;
 	int	ctr;
@@ -95,7 +95,7 @@ void	under_space(t_data *data, int i, int row)
 	}
 }
 
-void	right_space(t_data *data, int i)
+void	check_right_space(t_data *data, int i)
 {
 	int	ctr;
 	int	j;
@@ -124,7 +124,7 @@ void	right_space(t_data *data, int i)
 	}
 }
 
-void	left_space(t_data *data, int i)
+void	check_left_space(t_data *data, int i)
 {
 	int	j;
 	int	control;
