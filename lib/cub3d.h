@@ -6,7 +6,7 @@
 /*   By: ayirmili <ayirmili@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/12 18:04:30 by ayirmili          #+#    #+#             */
-/*   Updated: 2025/04/12 19:38:26 by ayirmili         ###   ########.fr       */
+/*   Updated: 2025/04/12 19:49:24 by ayirmili         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -179,5 +179,10 @@ void				ft_full_free(t_data *data);
 void				double_free(char **str);
 void				finish_gnl(int fd);
 void				move_player(t_data *data);
+char				*check_is_digit_and_trim(char *rgb_part, t_data *data);
+void				process_line(char *line, t_data *data, int fd);
+void				texture_count_check(t_data *data);
+void				free_gnl(int fd, char **trimmed, char **line);
+void				texture_count(char *trimmed, t_data *data);
 
 #endif

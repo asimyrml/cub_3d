@@ -6,13 +6,13 @@
 /*   By: ayirmili <ayirmili@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 12:06:52 by kgulfida          #+#    #+#             */
-/*   Updated: 2025/04/12 19:30:29 by ayirmili         ###   ########.fr       */
+/*   Updated: 2025/04/12 19:50:00 by ayirmili         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../lib/cub3d.h"
 
-static void	texture_count(char *trimmed, t_data *data)
+void	texture_count(char *trimmed, t_data *data)
 {
 	if (trimmed[0] == 'N' && trimmed[1] == 'O' && trimmed[2] == ' ')
 		data->parse->parse_no++;
@@ -28,7 +28,7 @@ static void	texture_count(char *trimmed, t_data *data)
 		data->parse->parse_f++;
 }
 
-static void	texture_count_check(t_data *data)
+void	texture_count_check(t_data *data)
 {
 	if (data->parse->parse_no != 1 || data->parse->parse_so != 1
 		|| data->parse->parse_we != 1 || data->parse->parse_ea != 1
@@ -36,7 +36,7 @@ static void	texture_count_check(t_data *data)
 		ft_malloc_error("Error\nThe wrong number of textures.\n", data);
 }
 
-static void	free_gnl(int fd, char **trimmed, char **line)
+void	free_gnl(int fd, char **trimmed, char **line)
 {
 	free(*line);
 	free(*trimmed);
@@ -47,29 +47,17 @@ static void	free_gnl(int fd, char **trimmed, char **line)
 void	textures_check_2(char *av, t_data *data, int fd)
 {
 	char	*line;
-	char	*trimmed;
 
 	init_parse(data);
 	fd = open(av, O_RDONLY);
+	if (fd < 0)
+		ft_texture_error("Error\nFile could not be opened\n", data);
 	while (1)
 	{
 		line = get_next_line(fd);
 		if (line == NULL)
 			break ;
-		trimmed = ft_strtrim(line, " \n");
-		texture_count(trimmed, data);
-		if (trimmed[0] == '1' && (data->parse->parse_no == 0
-				|| data->parse->parse_so == 0 || data->parse->parse_we == 0
-				|| data->parse->parse_ea == 0 || data->parse->parse_c == 0
-				|| data->parse->parse_f == 0))
-		{
-			ft_texture_error("Error\nThe map error.\n", data);
-			free_gnl(fd, &trimmed, &line);
-		}
-		if (xpm_check(trimmed, data) || color_line_check(trimmed, data))
-			free_gnl(fd, &trimmed, &line);
-		free(line);
-		free(trimmed);
+		process_line(line, data, fd);
 	}
 	close(fd);
 }

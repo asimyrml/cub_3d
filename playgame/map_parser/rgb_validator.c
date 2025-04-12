@@ -6,7 +6,7 @@
 /*   By: ayirmili <ayirmili@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 23:06:52 by amayuk            #+#    #+#             */
-/*   Updated: 2025/04/12 19:30:27 by ayirmili         ###   ########.fr       */
+/*   Updated: 2025/04/12 19:44:26 by ayirmili         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,17 +40,9 @@ int	rgb_validate(char **rgb, int i, int j, t_data *data)
 	while (rgb[i])
 	{
 		j = 0;
-		rgb_i = ft_strtrim(rgb[i], " \n");
-		while (rgb_i[j])
-		{
-			if (!ft_isdigit(rgb_i[j]))
-			{
-				free(rgb_i);
-				ft_texture_error("Error\nRGB values must be digits.\n", data);
-				return (1);
-			}
-			j++;
-		}
+		rgb_i = check_is_digit_and_trim(rgb[i], data);
+		if (!rgb_i)
+			return (1);
 		num = ft_atoi(rgb[i]);
 		control = ft_itoa(num);
 		flag = number_check(&rgb_i, &control, num, data);
