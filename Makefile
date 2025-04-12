@@ -13,10 +13,14 @@ LIBSRC = lib/libft/ft_atoi.c lib/libft/ft_bzero.c lib/libft/ft_calloc.c lib/libf
          lib/libft/ft_strnstr.c lib/libft/ft_strrchr.c lib/libft/ft_strtrim.c lib/libft/ft_substr.c \
          lib/libft/ft_toupper.c lib/libft/ft_tolower.c
 
-C_SRC = lib/GNL/get_next_line.c cub3d.c parse_map/textures_control.c parse_map/xpm_control.c parse_map/rgb_control.c \
-        parse_map/flood_fill.c parse_map/map_control.c parse_map/player_control.c parse_map/read_map.c parse_map/utils.c \
-        game/game.c game/init_key.c game/move.c game/put_image.c game/view.c game/raycasting.c \
-		utils/init.c utils/free.c utils/error.c
+C_SRC = lib/GNL/get_next_line.c cub3d.c \
+            playgame/initialize/init.c playgame/initialize/game.c \
+            playgame/map_parser/flood_fill.c playgame/map_parser/map_check.c playgame/map_parser/map_reader.c \
+            playgame/map_parser/map_utils.c playgame/map_parser/player_position.c playgame/map_parser/rgb_validator.c \
+            playgame/map_parser/textures_checker.c playgame/map_parser/xpm_checker.c \
+            playgame/movement/key_handler.c playgame/movement/move.c \
+            playgame/utils/error.c playgame/utils/free.c \
+            playgame/view/handle_direction.c playgame/view/raycasting.c playgame/view/set_images.c \
 
 MLX = lib/mlx_linux/libmlx.a
 SRCS = $(LIBSRC) $(C_SRC)
