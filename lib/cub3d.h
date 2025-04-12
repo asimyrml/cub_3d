@@ -166,5 +166,6 @@ void	destroy_mlx(t_data *data);
 void	ft_full_free(t_data *data);
 void	double_free(char **str);
 void	finish_gnl(int fd);
+void	move_player(t_data *data);
 
 #endif
