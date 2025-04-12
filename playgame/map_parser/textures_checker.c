@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   textures_checker.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: beyza <beyza@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ayirmili <ayirmili@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 12:06:52 by kgulfida          #+#    #+#             */
-/*   Updated: 2025/04/12 16:36:44 by beyza            ###   ########.fr       */
+/*   Updated: 2025/04/12 18:14:43 by ayirmili         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,23 +15,23 @@
 static void	texture_count(char *trimmed, t_data *data)
 {
 	if (trimmed[0] == 'N' && trimmed[1] == 'O' && trimmed[2] == ' ')
-		data->parse->no++;
+		data->parse->parse_no++;
 	else if (trimmed[0] == 'S' && trimmed[1] == 'O' && trimmed[2] == ' ')
-		data->parse->so++;
+		data->parse->parse_so++;
 	else if (trimmed[0] == 'W' && trimmed[1] == 'E' && trimmed[2] == ' ')
-		data->parse->we++;
+		data->parse->parse_we++;
 	else if (trimmed[0] == 'E' && trimmed[1] == 'A' && trimmed[2] == ' ')
-		data->parse->ea++;
+		data->parse->parse_ea++;
 	else if (trimmed[0] == 'C' && trimmed[1] == ' ')
-		data->parse->c++;
+		data->parse->parse_c++;
 	else if (trimmed[0] == 'F' && trimmed[1] == ' ')
-		data->parse->f++;
+		data->parse->parse_f++;
 }
 
 static void	texture_count_check(t_data *data)
 {
-	if (data->parse->no != 1 || data->parse->so != 1 || data->parse->we != 1
-		|| data->parse->ea != 1 || data->parse->c != 1 || data->parse->f != 1)
+	if (data->parse->parse_no != 1 || data->parse->parse_so != 1 || data->parse->parse_we != 1
+		|| data->parse->parse_ea != 1 || data->parse->parse_c != 1 || data->parse->parse_f != 1)
 		ft_malloc_error("Error\nThe wrong number of textures.\n", data);
 }
 
@@ -57,9 +57,9 @@ void	textures_check_2(char *av, t_data *data, int fd)
 			break ;
 		trimmed = ft_strtrim(line, " \n");
 		texture_count(trimmed, data);
-		if (trimmed[0] == '1' && (data->parse->no == 0 || data->parse->so == 0
-				|| data->parse->we == 0 || data->parse->ea == 0
-				|| data->parse->c == 0 || data->parse->f == 0))
+		if (trimmed[0] == '1' && (data->parse->parse_no == 0 || data->parse->parse_so == 0
+				|| data->parse->parse_we == 0 || data->parse->parse_ea == 0
+				|| data->parse->parse_c == 0 || data->parse->parse_f == 0))
 		{
 			ft_texture_error("Error\nThe map error.\n", data);
 			free_gnl(fd, &trimmed, &line);

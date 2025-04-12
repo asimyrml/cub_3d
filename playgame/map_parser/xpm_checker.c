@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   xpm_checker.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: beyza <beyza@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ayirmili <ayirmili@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 12:14:14 by kgulfida          #+#    #+#             */
-/*   Updated: 2025/04/12 16:36:49 by beyza            ###   ########.fr       */
+/*   Updated: 2025/04/12 18:24:47 by ayirmili         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,16 +48,16 @@ static int	xpm_check_2(char *str, t_data *data)
 		str += 2;
 		while (str && *str == ' ')
 			str++;
-		data->texture->west = ft_strdup(str);
-		return (xpm_extension_check(data->texture->west, data));
+		data->texture->txt_west = ft_strdup(str);
+		return (xpm_extension_check(data->texture->txt_west, data));
 	}
 	else if (str[0] == 'E' && str[1] == 'A')
 	{
 		str += 2;
 		while (str && *str == ' ')
 			str++;
-		data->texture->east = ft_strdup(str);
-		return (xpm_extension_check(data->texture->east, data));
+		data->texture->txt_east = ft_strdup(str);
+		return (xpm_extension_check(data->texture->txt_east, data));
 	}
 	return (0);
 }
@@ -72,16 +72,16 @@ int	xpm_check(char *str, t_data *data)
 		str += 2;
 		while (str && *str == ' ')
 			str++;
-		data->texture->north = ft_strdup(str);
-		flag = xpm_extension_check(data->texture->north, data);
+		data->texture->txt_north = ft_strdup(str);
+		flag = xpm_extension_check(data->texture->txt_north, data);
 	}
 	else if (str[0] == 'S' && str[1] == 'O')
 	{
 		str += 2;
 		while (str && *str == ' ')
 			str++;
-		data->texture->south = ft_strdup(str);
-		flag = xpm_extension_check(data->texture->south, data);
+		data->texture->txt_south = ft_strdup(str);
+		flag = xpm_extension_check(data->texture->txt_south, data);
 	}
 	if (flag)
 		return (1);

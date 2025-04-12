@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cub3d.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ayirmili <ayirmili@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/04/12 18:04:30 by ayirmili          #+#    #+#             */
+/*   Updated: 2025/04/12 18:42:13 by ayirmili         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef CUB3D_H
 # define CUB3D_H
 # include "mlx_linux/mlx.h"
@@ -14,59 +26,60 @@
 
 typedef struct s_parse
 {
-	int	c;
-	int	f;
-	int	no;
-	int	so;
-	int	we;
-	int	ea;
+	int	parse_c;
+	int	parse_f;
+	int	parse_no;
+	int	parse_so;
+	int	parse_we;
+	int	parse_ea;
 }	t_parse;
+
 
 typedef struct s_player
 {
-	double	pos_x;
-	double	pos_y;
-	double	dir_x;
-	double	dir_y;
-	double	plane_x;
-	double	plane_y;
+	double	position_x;
+	double	position_y;
+	double	direction_x;
+	double	direction_y;
+	double	view_x;
+	double	view_y;
 }	t_player;
 
 typedef struct s_map
 {
 	char	**map;
-	char	**cpymap;
+	char	**clone_map;
 	int		row;
 	int		player_count;
 }	t_map;
 
 typedef struct s_textures
 {
-	char	**floor;
-	char	**ceiling;
-	char	*north;
-	char	*south;
-	char	*west;
-	char	*east;
+	char	**txt_floor;
+	char	**txt_ceiling;
+	char	*txt_north;
+	char	*txt_south;
+	char	*txt_west;
+	char	*txt_east;
 }	t_textures;
 
 typedef struct s_game
 {
 	void	*mlx;
-	void	*window;
-	void	*img;
-	void	*no;
-	void	*so;
-	void	*ea;
-	void	*we;
-	int		*addr;
-	int		*addr_n;
-	int		*addr_s;
-	int		*addr_e;
-	int		*addr_w;
-	int		bpp;
+	void	*wndw;
+	void	*image;
+	void	*game_no;
+	void	*game_so;
+	void	*game_ea;
+	void	*game_we;
+	int		*address;
+	int		*address_no;
+	int		*address_so;
+	int		*address_ea;
+	int		*address_we;
+	int		bit_size;
 	int		size_line;
-	int		endian;
+	int		byte_order;
 	int		size;
 	double	turn_speed;
 	double	walk_speed;
@@ -93,17 +106,16 @@ typedef struct s_raycast
 	int		tex_x;
 	int		tex_y;
 	double	tex_y_next;
-}	t_raycast;
+}	t_raycasting;
 
 typedef struct s_keys
 {
-	int			w;
-	int			a;
-	int			s;
-	int			d;
-	int			esc;
-	int			left;
-	int			right;
+	int			key_w;
+	int			key_a;
+	int			key_s;
+	int			key_d;
+	int			key_left;
+	int			key_right;
 }				t_keys;
 
 typedef struct s_data
@@ -113,7 +125,7 @@ typedef struct s_data
 	t_player	*player;
 	t_map		*map;
 	t_game		*game;
-	t_raycast	*raycast;
+	t_raycasting	*raycast;
 	t_keys		*key;
 }	t_data;
 

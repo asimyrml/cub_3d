@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rgb_validator.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: beyza <beyza@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ayirmili <ayirmili@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 23:06:52 by amayuk            #+#    #+#             */
-/*   Updated: 2025/04/12 16:36:39 by beyza            ###   ########.fr       */
+/*   Updated: 2025/04/12 18:23:46 by ayirmili         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,20 +101,20 @@ int	color_line_check(char *str, t_data *data)
 {
 	if (str[0] == 'F' && str[1] == ' ')
 	{
-		if (data->texture->floor == NULL)
-			data->texture->floor = ft_split(str + 2, ',');
+		if (data->texture->txt_floor == NULL)
+			data->texture->txt_floor = ft_split(str + 2, ',');
 		if (color_comma_count(str, data)
-			|| color_line_component_count(data->texture->floor, data)
-			|| rgb_validate(data->texture->floor, 0, 0, data))
+			|| color_line_component_count(data->texture->txt_floor, data)
+			|| rgb_validate(data->texture->txt_floor, 0, 0, data))
 			return (1);
 	}
 	else if (str[0] == 'C' && str[1] == ' ')
 	{
-		if (data->texture->ceiling == NULL)
-			data->texture->ceiling = ft_split(str + 2, ',');
+		if (data->texture->txt_ceiling == NULL)
+			data->texture->txt_ceiling = ft_split(str + 2, ',');
 		if (color_comma_count(str, data)
-			|| color_line_component_count(data->texture->ceiling, data)
-			|| rgb_validate(data->texture->ceiling, 0, 0, data))
+			|| color_line_component_count(data->texture->txt_ceiling, data)
+			|| rgb_validate(data->texture->txt_ceiling, 0, 0, data))
 			return (1);
 	}
 	return (0);

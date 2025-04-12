@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kgulfida <kgulfida@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ayirmili <ayirmili@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 12:06:46 by kgulfida          #+#    #+#             */
-/*   Updated: 2025/02/06 13:20:11 by kgulfida         ###   ########.fr       */
+/*   Updated: 2025/04/12 18:43:16 by ayirmili         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	init_data(t_data *data)
 	data->game = malloc(sizeof(t_game));
 	data->key = malloc(sizeof(t_keys));
 	data->player = malloc(sizeof(t_player));
-	data->raycast = malloc(sizeof(t_raycast));
+	data->raycast = malloc(sizeof(t_raycasting));
 	if (!data->map || !data->game || !data->parse || !data->key || !data->player
 		|| !data->texture || !data->raycast)
 		ft_malloc_error("Error\nMalloc problem.\n", data);

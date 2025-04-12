@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   flood_fill.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: beyza <beyza@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ayirmili <ayirmili@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:08:55 by kgulfida          #+#    #+#             */
-/*   Updated: 2025/04/12 16:36:11 by beyza            ###   ########.fr       */
+/*   Updated: 2025/04/12 18:21:06 by ayirmili         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ void	flood_fill_check(t_data *data)
 	while (++i < data->map->row)
 	{
 		j = 0;
-		while (data->map->cpymap[i][j])
+		while (data->map->clone_map[i][j])
 		{
-			if (data->map->cpymap[i][j] != ' ' && data->map->cpymap[i][j] != 'F'
-				&& data->map->cpymap[i][j] != '\n')
+			if (data->map->clone_map[i][j] != ' ' && data->map->clone_map[i][j] != 'F'
+				&& data->map->clone_map[i][j] != '\n')
 				ft_error("Error\nMultiple map.\n", data);
 			j++;
 		}
@@ -34,10 +34,10 @@ void	flood_fill_check(t_data *data)
 void	flood_fill(int x, int y, t_data *data)
 {
 	if (x < 0 || y < 0 || y >= data->map->row
-		|| x >= (int)ft_strlen(data->map->cpymap[y])
-		|| data->map->cpymap[y][x] == ' ' || data->map->cpymap[y][x] == 'F')
+		|| x >= (int)ft_strlen(data->map->clone_map[y])
+		|| data->map->clone_map[y][x] == ' ' || data->map->clone_map[y][x] == 'F')
 		return ;
-	data->map->cpymap[y][x] = 'F';
+	data->map->clone_map[y][x] = 'F';
 	flood_fill(x + 1, y, data);
 	flood_fill(x - 1, y, data);
 	flood_fill(x, y + 1, data);

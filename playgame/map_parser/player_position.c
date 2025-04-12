@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player_position.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: beyza <beyza@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ayirmili <ayirmili@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 12:14:04 by kgulfida          #+#    #+#             */
-/*   Updated: 2025/04/12 16:36:33 by beyza            ###   ########.fr       */
+/*   Updated: 2025/04/12 18:19:21 by ayirmili         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,17 @@ void	player_direction_2(char direction, t_data *data)
 {
 	if (direction == 'E')
 	{
-		data->player->dir_x = 1;
-		data->player->dir_y = 0;
-		data->player->plane_x = 0;
-		data->player->plane_y = 0.66;
+		data->player->direction_x = 1;
+		data->player->direction_y = 0;
+		data->player->view_x = 0;
+		data->player->view_y = 0.66;
 	}
 	else if (direction == 'W')
 	{
-		data->player->dir_x = -1;
-		data->player->dir_y = 0;
-		data->player->plane_x = 0;
-		data->player->plane_y = -0.66;
+		data->player->direction_x = -1;
+		data->player->direction_y = 0;
+		data->player->view_x = 0;
+		data->player->view_y = -0.66;
 	}
 }
 
@@ -34,17 +34,17 @@ void	player_direction(char direction, t_data *data)
 {
 	if (direction == 'N')
 	{
-		data->player->dir_x = 0;
-		data->player->dir_y = -1;
-		data->player->plane_x = 0.66;
-		data->player->plane_y = 0;
+		data->player->direction_x = 0;
+		data->player->direction_y = -1;
+		data->player->view_x = 0.66;
+		data->player->view_y = 0;
 	}
 	else if (direction == 'S')
 	{
-		data->player->dir_x = 0;
-		data->player->dir_y = 1;
-		data->player->plane_x = -0.66;
-		data->player->plane_y = 0;
+		data->player->direction_x = 0;
+		data->player->direction_y = 1;
+		data->player->view_x = -0.66;
+		data->player->view_y = 0;
 	}
 	else
 		player_direction_2(direction, data);
@@ -64,14 +64,14 @@ void	find_player(t_data *data)
 			if (data->map->map[i][j] == 'N' || data->map->map[i][j] == 'W'
 				|| data->map->map[i][j] == 'S' || data->map->map[i][j] == 'E')
 			{
-				data->player->pos_x = j + 0.5;
-				data->player->pos_y = i + 0.5;
+				data->player->position_x = j + 0.5;
+				data->player->position_y = i + 0.5;
 				player_around_check(data, i, j);
 				player_direction(data->map->map[i][j], data);
 			}
 		}
 	}
-	flood_fill(data->player->pos_x, data->player->pos_y, data);
+	flood_fill(data->player->position_x, data->player->position_y, data);
 }
 
 void	player_check(t_data *data)

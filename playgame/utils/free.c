@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: beyza <beyza@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ayirmili <ayirmili@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 12:06:52 by kgulfida          #+#    #+#             */
-/*   Updated: 2025/04/12 16:37:15 by beyza            ###   ########.fr       */
+/*   Updated: 2025/04/12 18:24:47 by ayirmili         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,17 @@ void	ft_full_free(t_data *data)
 {
 	if (data->map->map)
 		double_free(data->map->map);
-	if (data->map->cpymap)
-		double_free(data->map->cpymap);
+	if (data->map->clone_map)
+		double_free(data->map->clone_map);
 	free(data->map);
-	if (data->texture->floor)
-		double_free(data->texture->floor);
-	if (data->texture->ceiling)
-		double_free(data->texture->ceiling);
-	free(data->texture->north);
-	free(data->texture->south);
-	free(data->texture->west);
-	free(data->texture->east);
+	if (data->texture->txt_floor)
+		double_free(data->texture->txt_floor);
+	if (data->texture->txt_ceiling)
+		double_free(data->texture->txt_ceiling);
+	free(data->texture->txt_north);
+	free(data->texture->txt_south);
+	free(data->texture->txt_west);
+	free(data->texture->txt_east);
 	free(data->texture);
 	free(data->parse);
 	free(data->player);

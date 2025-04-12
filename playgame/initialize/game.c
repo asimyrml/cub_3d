@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: beyza <beyza@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ayirmili <ayirmili@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 18:23:31 by amayuk            #+#    #+#             */
-/*   Updated: 2025/04/12 16:39:42 by beyza            ###   ########.fr       */
+/*   Updated: 2025/04/12 18:32:25 by ayirmili         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,40 +14,40 @@
 
 void	set_address(t_data *data)
 {
-	data->game->addr_n = (int *)mlx_get_data_addr(data->game->no,
-			&data->game->bpp, &data->game->size_line, &data->game->endian);
-	data->game->addr_s = (int *)mlx_get_data_addr(data->game->so,
-			&data->game->bpp, &data->game->size_line, &data->game->endian);
-	data->game->addr_e = (int *)mlx_get_data_addr(data->game->ea,
-			&data->game->bpp, &data->game->size_line, &data->game->endian);
-	data->game->addr_w = (int *)mlx_get_data_addr(data->game->we,
-			&data->game->bpp, &data->game->size_line, &data->game->endian);
-	if (!data->game->addr_e || !data->game->addr_w || !data->game->addr_s
-		|| !data->game->addr_n)
+	data->game->address_no = (int *)mlx_get_data_addr(data->game->game_no,
+			&data->game->bit_size, &data->game->size_line, &data->game->byte_order);
+	data->game->address_so = (int *)mlx_get_data_addr(data->game->game_so,
+			&data->game->bit_size, &data->game->size_line, &data->game->byte_order);
+	data->game->address_ea = (int *)mlx_get_data_addr(data->game->game_ea,
+			&data->game->bit_size, &data->game->size_line, &data->game->byte_order);
+	data->game->address_we = (int *)mlx_get_data_addr(data->game->game_we,
+			&data->game->bit_size, &data->game->size_line, &data->game->byte_order);
+	if (!data->game->address_ea || !data->game->address_we || !data->game->address_so
+		|| !data->game->address_no)
 		ft_error("Error:\nTextures' address creation failed.\n", data);
 }
 
 void	open_window(t_data *data)
 {
 	data->game->mlx = mlx_init();
-	data->game->window = mlx_new_window(data->game->mlx, screen_w, screen_h,
+	data->game->wndw = mlx_new_window(data->game->mlx, screen_w, screen_h,
 			"Cub3D");
-	data->game->img = mlx_new_image(data->game->mlx, screen_w, screen_h);
-	data->game->addr = (int *)mlx_get_data_addr(data->game->img,
-			&data->game->bpp, &data->game->size_line, &data->game->endian);
-	if (!data->game->mlx || !data->game->window || !data->game->img
-		|| !data->game->addr)
+	data->game->image = mlx_new_image(data->game->mlx, screen_w, screen_h);
+	data->game->address = (int *)mlx_get_data_addr(data->game->image,
+			&data->game->bit_size, &data->game->size_line, &data->game->byte_order);
+	if (!data->game->mlx || !data->game->wndw || !data->game->image
+		|| !data->game->address)
 		ft_error("Error\nGame creation failed.\n", data);
-	data->game->no = mlx_xpm_file_to_image(data->game->mlx,
-			data->texture->north, &data->game->size, &data->game->size);
-	data->game->so = mlx_xpm_file_to_image(data->game->mlx,
-			data->texture->south, &data->game->size, &data->game->size);
-	data->game->we = mlx_xpm_file_to_image(data->game->mlx, data->texture->west,
+	data->game->game_no = mlx_xpm_file_to_image(data->game->mlx,
+			data->texture->txt_north, &data->game->size, &data->game->size);
+	data->game->game_so = mlx_xpm_file_to_image(data->game->mlx,
+			data->texture->txt_south, &data->game->size, &data->game->size);
+	data->game->game_we = mlx_xpm_file_to_image(data->game->mlx, data->texture->txt_west,
 			&data->game->size, &data->game->size);
-	data->game->ea = mlx_xpm_file_to_image(data->game->mlx, data->texture->east,
+	data->game->game_ea = mlx_xpm_file_to_image(data->game->mlx, data->texture->txt_east,
 			&data->game->size, &data->game->size);
-	if (!data->game->no || !data->game->so || !data->game->ea
-		|| !data->game->we)
+	if (!data->game->game_no || !data->game->game_so || !data->game->game_ea
+		|| !data->game->game_we)
 		ft_error("Error:\nMissing image file or texture creation faild.", data);
 	set_address(data);
 }
@@ -63,8 +63,8 @@ void	game(t_data *data)
 {
 	open_window(data);
 	mlx_loop_hook(data->game->mlx, put_image, data);
-	mlx_hook(data->game->window, 2, 1L << 0, key_press, data);
-	mlx_hook(data->game->window, 3, 1L << 1, key_release, data);
-	mlx_hook(data->game->window, 17, 0, close_window, data);
+	mlx_hook(data->game->wndw, 2, 1L << 0, key_press, data);
+	mlx_hook(data->game->wndw, 3, 1L << 1, key_release, data);
+	mlx_hook(data->game->wndw, 17, 0, close_window, data);
 	mlx_loop(data->game->mlx);
 }

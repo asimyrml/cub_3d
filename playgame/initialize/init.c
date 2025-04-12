@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: beyza <beyza@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ayirmili <ayirmili@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 16:50:33 by kgulfida          #+#    #+#             */
-/*   Updated: 2025/04/12 16:36:57 by beyza            ###   ########.fr       */
+/*   Updated: 2025/04/12 18:38:08 by ayirmili         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,23 @@
 
 void	init_parse(t_data *data)
 {
-	data->parse->c = 0;
-	data->parse->f = 0;
-	data->parse->no = 0;
-	data->parse->so = 0;
-	data->parse->ea = 0;
-	data->parse->we = 0;
+	data->parse->parse_c = 0;
+	data->parse->parse_f = 0;
+	data->parse->parse_no = 0;
+	data->parse->parse_so = 0;
+	data->parse->parse_ea = 0;
+	data->parse->parse_we = 0;
 }
 
 void	init_texture(t_data *data)
 {
-	data->texture->ceiling = NULL;
-	data->texture->floor = NULL;
-	data->texture->north = NULL;
-	data->texture->south = NULL;
-	data->texture->west = NULL;
-	data->texture->east = NULL;
-	data->map->cpymap = NULL;
+	data->texture->txt_ceiling = NULL;
+	data->texture->txt_floor = NULL;
+	data->texture->txt_north = NULL;
+	data->texture->txt_south = NULL;
+	data->texture->txt_west = NULL;
+	data->texture->txt_east = NULL;
+	data->map->clone_map = NULL;
 	data->map->map = NULL;
 	data->map->row = 0;
 	data->map->player_count = 0;
@@ -44,8 +44,8 @@ void	init_map(t_data *data)
 		write(2, "Error:\nMemory problem.\n", 24);
 		exit(1);
 	}
-	data->map->cpymap = (char **)malloc(sizeof(char *) * (data->map->row + 1));
-	if (data->map->cpymap == NULL)
+	data->map->clone_map = (char **)malloc(sizeof(char *) * (data->map->row + 1));
+	if (data->map->clone_map == NULL)
 	{
 		write(2, "Error:\nMemory problem.\n", 24);
 		exit(1);
@@ -55,17 +55,17 @@ void	init_map(t_data *data)
 void	init_game(t_data *data)
 {
 	data->game->mlx = NULL;
-	data->game->window = NULL;
-	data->game->img = NULL;
-	data->game->no = NULL;
-	data->game->so = NULL;
-	data->game->ea = NULL;
-	data->game->we = NULL;
-	data->game->addr = NULL;
-	data->game->addr_n = NULL;
-	data->game->addr_s = NULL;
-	data->game->addr_e = NULL;
-	data->game->addr_w = NULL;
+	data->game->wndw = NULL;
+	data->game->image = NULL;
+	data->game->game_no = NULL;
+	data->game->game_so = NULL;
+	data->game->game_ea = NULL;
+	data->game->game_we = NULL;
+	data->game->address = NULL;
+	data->game->address_no = NULL;
+	data->game->address_so = NULL;
+	data->game->address_ea = NULL;
+	data->game->address_we = NULL;
 	data->game->size = 0;
 	data->game->turn_speed = 0.03;
 	data->game->walk_speed = 0.032;
@@ -73,10 +73,10 @@ void	init_game(t_data *data)
 
 void	init_key(t_data *data)
 {
-	data->key->w = 0;
-	data->key->a = 0;
-	data->key->s = 0;
-	data->key->d = 0;
-	data->key->left = 0;
-	data->key->right = 0;
+	data->key->key_w = 0;
+	data->key->key_a = 0;
+	data->key->key_s = 0;
+	data->key->key_d = 0;
+	data->key->key_left = 0;
+	data->key->key_right = 0;
 }
