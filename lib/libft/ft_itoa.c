@@ -3,66 +3,60 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: beyarsla <beyarsla@student.42istanbul.c    +#+  +:+       +#+        */
+/*   By: kgulfida <kgulfida@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/12 18:38:31 by beyarsla          #+#    #+#             */
-/*   Updated: 2023/12/19 16:22:10 by beyarsla         ###   ########.fr       */
+/*   Created: 2023/12/13 16:19:57 by kgulfida          #+#    #+#             */
+/*   Updated: 2023/12/13 19:34:13 by kgulfida         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char	*value(char *str, unsigned int number, long int len)
+static int	num_len(long int n)
 {
-	while (number > 0)
-	{
-		str[len--] = (number % 10) + 48;
-		number = number / 10;
-	}
-	return (str);
-}
+	size_t	len;
 
-static int	counter(long n)
-{
-	int	count;
-
-	count = 0;
+	len = 0;
 	if (n == 0)
-		return (1);
+		len = 1;
 	if (n < 0)
 	{
-		count++;
-		n = n * -1;
+		n *= -1;
+		len = 1;
 	}
-	while (n / 10 != 0)
+	while (n > 0)
 	{
-		count++;
+		len++;
 		n = n / 10;
 	}
-	count++;
-	return (count);
+	return (len);
 }
 
 char	*ft_itoa(int n)
 {
-	char			*s;
-	long int		length;
-	unsigned int	number;
+	char		*str;
+	long int	nb;
+	size_t		len;
 
-	length = counter(n);
-	s = malloc(length * sizeof(char) + 1);
-	if (!s)
-		return (NULL);
-	s[length--] = '\0';
-	if (n == 0)
-		s[0] = '0';
-	if (n < 0)
+	nb = n;
+	len = num_len(nb);
+	str = (char *)malloc(sizeof(char) * (len + 1));
+	if (!str)
+		return (0);
+	str[len] = '\0';
+	if (nb == 0)
+		str[0] = '0';
+	len--;
+	if (nb < 0)
 	{
-		number = n * -1;
-		s[0] = '-';
+		nb *= -1;
+		str[0] = '-';
 	}
-	else
-		number = n;
-	s = value(s, number, length);
-	return (s);
+	while (nb > 0)
+	{
+		str[len] = (nb % 10) + '0';
+		nb /= 10;
+		len--;
+	}
+	return (str);
 }

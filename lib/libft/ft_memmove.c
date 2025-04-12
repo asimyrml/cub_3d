@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: beyarsla <beyarsla@student.42istanbul.c    +#+  +:+       +#+        */
+/*   By: kgulfida <kgulfida@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/09 18:19:50 by beyarsla          #+#    #+#             */
-/*   Updated: 2023/12/21 16:11:31 by beyarsla         ###   ########.fr       */
+/*   Created: 2023/12/10 16:42:40 by kgulfida          #+#    #+#             */
+/*   Updated: 2023/12/11 13:57:49 by kgulfida         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,26 @@
 
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	size_t	len;
+	unsigned char	*dest1;
 
-	len = 0;
+	dest1 = (unsigned char *)dest;
 	if (!dest && !src)
 		return (dest);
-	if (src < dest)
+	if (dest == src)
+		return (dest);
+	else if (dest > src)
 	{
-		len = n;
-		while (len > 0)
-		{
-			len--;
-			((unsigned char *)dest)[len] = ((unsigned char *)src)[len];
-		}
+		while (n--)
+			((unsigned char *)dest)[n] = ((unsigned char *)src)[n];
 	}
 	else
 	{
-		len = 0;
-		while (len < n)
+		while (n--)
 		{
-			((unsigned char *)dest)[len] = ((unsigned char *)src)[len];
-			len++;
+			*(unsigned char *)dest = *(unsigned char *)src;
+			dest++;
+			src++;
 		}
 	}
-	return (dest);
+	return (dest1);
 }

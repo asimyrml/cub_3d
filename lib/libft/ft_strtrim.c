@@ -3,33 +3,48 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: beyarsla <beyarsla@student.42istanbul.c    +#+  +:+       +#+        */
+/*   By: kgulfida <kgulfida@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/11 18:47:08 by beyarsla          #+#    #+#             */
-/*   Updated: 2023/12/21 18:49:36 by beyarsla         ###   ########.fr       */
+/*   Created: 2023/12/11 18:12:12 by kgulfida          #+#    #+#             */
+/*   Updated: 2023/12/13 17:17:20 by kgulfida         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+static int	ft_check(char const c, char const *set)
+{
+	int	i;
+
+	i = 0;
+	while (set[i])
+	{
+		if (set[i] == c)
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	size_t	i;
-	size_t	j;
-	size_t	len;
+	int		i;
+	int		len;
 	char	*str;
 
-	if (!s1 || !set)
-		return (NULL);
 	i = 0;
-	while (s1[i] != '\0' && ft_strchr(set, *s1))
-		s1++;
+	if (!s1 || !set)
+		return (ft_strdup(s1));
+	while (s1[i] && ft_check(*(s1 + i), set))
+		i++;
 	len = ft_strlen(s1);
-	j = len - 1;
-	if (i == len)
+	if (i >= len)
 		return (ft_strdup(""));
-	while (j > i && ft_strchr(set, s1[j]))
-		j--;
-	str = ft_substr(s1, 0, j + 1);
+	else
+	{
+		while (len != 0 && ft_check(*(s1 + (len - 1)), set))
+			len--;
+		str = ft_substr(s1, i, len - i);
+	}
 	return (str);
 }
