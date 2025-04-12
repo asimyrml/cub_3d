@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kgulfida <kgulfida@student.42.fr>          +#+  +:+       +#+        */
+/*   By: beyza <beyza@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 12:06:52 by kgulfida          #+#    #+#             */
-/*   Updated: 2025/01/15 18:44:28 by kgulfida         ###   ########.fr       */
+/*   Updated: 2025/04/12 16:37:15 by beyza            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../lib/cub3d.h"
+#include "../../lib/cub3d.h"
 
 void	ft_full_free(t_data *data)
 {

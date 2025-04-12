@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amayuk <amayuk@student.42.fr>              +#+  +:+       +#+        */
+/*   By: beyza <beyza@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 18:23:31 by amayuk            #+#    #+#             */
-/*   Updated: 2025/01/21 19:12:15 by amayuk           ###   ########.fr       */
+/*   Updated: 2025/04/12 16:39:42 by beyza            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../lib/cub3d.h"
+#include "../../lib/cub3d.h"
 
 void	set_address(t_data *data)
 {
