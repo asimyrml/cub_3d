@@ -6,7 +6,7 @@
 /*   By: ayirmili <ayirmili@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 12:14:14 by kgulfida          #+#    #+#             */
-/*   Updated: 2025/04/12 18:24:47 by ayirmili         ###   ########.fr       */
+/*   Updated: 2025/04/12 19:33:41 by ayirmili         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ static int	xpm_extension_check(char *texture, t_data *data)
 		return (1);
 	}
 	len = ft_strlen(texture);
-	if (texture[len - 1] != 'm' || texture[len - 2] != 'p' || texture[len
-			- 3] != 'x' || texture[len - 4] != '.')
+	if (texture[len - 1] != 'm' || texture[len - 2] != 'p' || \
+		texture[len - 3] != 'x' || texture[len - 4] != '.')
 	{
 		ft_texture_error("Error\nTexture file must have a .xpm extension.\n",
 			data);

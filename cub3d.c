@@ -6,7 +6,7 @@
 /*   By: ayirmili <ayirmili@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 12:06:46 by kgulfida          #+#    #+#             */
-/*   Updated: 2025/04/12 18:43:16 by ayirmili         ###   ########.fr       */
+/*   Updated: 2025/04/12 19:37:08 by ayirmili         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,15 +40,15 @@ void	av_check(char *av)
 	{
 		close(fd);
 		write(2, "Error\nFile can not open.\n", 26);
-		exit (1);
+		exit(1);
 	}
 	close(fd);
 	len = ft_strlen(av);
-	if (av[len - 1] != 'b' || av[len - 2] != 'u' || av[len - 3] != 'c' || av[len
-			- 4] != '.')
+	if (av[len - 1] != 'b' || av[len - 2] != 'u' || av[len - 3] != 'c' || \
+		av[len - 4] != '.')
 	{
 		write(2, "Error\nThe file is not '.cub' extension.\n", 41);
-		exit (1);
+		exit(1);
 	}
 }
 
@@ -59,7 +59,7 @@ int	main(int ac, char **av)
 	if (ac != 2)
 	{
 		write(2, "Error\nNumber of invalid argument.\n", 35);
-		return 1;
+		return (1);
 	}
 	av_check(av[1]);
 	init_data(&data);
@@ -69,6 +69,6 @@ int	main(int ac, char **av)
 	char_check(&data);
 	flood_fill_check(&data);
 	is_map_closed(&data);
-	game(&data);
+	start_game(&data);
 	return (0);
 }

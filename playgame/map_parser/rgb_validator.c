@@ -6,7 +6,7 @@
 /*   By: ayirmili <ayirmili@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 23:06:52 by amayuk            #+#    #+#             */
-/*   Updated: 2025/04/12 18:23:46 by ayirmili         ###   ########.fr       */
+/*   Updated: 2025/04/12 19:30:27 by ayirmili         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,9 +71,9 @@ int	color_line_component_count(char **str, t_data *data)
 	if (i != 3)
 	{
 		ft_texture_error("Error\nRGB must have 3 components.\n", data);
-		return 1;	
+		return (1);
 	}
-	return 0;
+	return (0);
 }
 
 int	color_comma_count(char *str, t_data *data)

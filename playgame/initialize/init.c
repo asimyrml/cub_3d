@@ -6,7 +6,7 @@
 /*   By: ayirmili <ayirmili@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 16:50:33 by kgulfida          #+#    #+#             */
-/*   Updated: 2025/04/12 18:38:08 by ayirmili         ###   ########.fr       */
+/*   Updated: 2025/04/12 19:28:06 by ayirmili         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,8 @@ void	init_map(t_data *data)
 		write(2, "Error:\nMemory problem.\n", 24);
 		exit(1);
 	}
-	data->map->clone_map = (char **)malloc(sizeof(char *) * (data->map->row + 1));
+	data->map->clone_map = (char **)malloc(sizeof(char *) * (data->map->row
+				+ 1));
 	if (data->map->clone_map == NULL)
 	{
 		write(2, "Error:\nMemory problem.\n", 24);

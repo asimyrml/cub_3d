@@ -6,7 +6,7 @@
 /*   By: ayirmili <ayirmili@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 15:20:17 by kgulfida          #+#    #+#             */
-/*   Updated: 2025/04/12 18:21:06 by ayirmili         ###   ########.fr       */
+/*   Updated: 2025/04/12 19:31:04 by ayirmili         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,7 +129,6 @@ void	map_check(char *av, t_data *data, char *line, char *trimmed)
 		free(trimmed);
 		free(line);
 	}
-	// printf("%d\n", data->map->row);
 	multiple_map_check(fd, data);
 	map(av, data, i, -1);
 }

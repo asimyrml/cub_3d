@@ -6,7 +6,7 @@
 /*   By: ayirmili <ayirmili@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:08:55 by kgulfida          #+#    #+#             */
-/*   Updated: 2025/04/12 18:21:06 by ayirmili         ###   ########.fr       */
+/*   Updated: 2025/04/12 19:29:37 by ayirmili         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ void	flood_fill_check(t_data *data)
 		j = 0;
 		while (data->map->clone_map[i][j])
 		{
-			if (data->map->clone_map[i][j] != ' ' && data->map->clone_map[i][j] != 'F'
+			if (data->map->clone_map[i][j] != ' '
+				&& data->map->clone_map[i][j] != 'F'
 				&& data->map->clone_map[i][j] != '\n')
 				ft_error("Error\nMultiple map.\n", data);
 			j++;
@@ -35,7 +36,8 @@ void	flood_fill(int x, int y, t_data *data)
 {
 	if (x < 0 || y < 0 || y >= data->map->row
 		|| x >= (int)ft_strlen(data->map->clone_map[y])
-		|| data->map->clone_map[y][x] == ' ' || data->map->clone_map[y][x] == 'F')
+		|| data->map->clone_map[y][x] == ' '
+		|| data->map->clone_map[y][x] == 'F')
 		return ;
 	data->map->clone_map[y][x] = 'F';
 	flood_fill(x + 1, y, data);
