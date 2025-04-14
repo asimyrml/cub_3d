@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: beyarsla <beyarsla@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ayirmili <ayirmili@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 16:44:55 by beyarsla          #+#    #+#             */
-/*   Updated: 2025/04/14 16:44:56 by beyarsla         ###   ########.fr       */
+/*   Updated: 2025/04/14 20:26:29 by ayirmili         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,8 @@ void	init_game(t_data *data)
 	data->game->address_ea = NULL;
 	data->game->address_we = NULL;
 	data->game->size = 0;
-	data->game->turn_speed = 0.03;
-	data->game->walk_speed = 0.032;
+	data->game->turn_speed = 0.05;
+	data->game->walk_speed = 0.052;
 }
 
 void	init_key(t_data *data)
