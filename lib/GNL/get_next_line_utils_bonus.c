@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayirmili <ayirmili@student.42.fr>          +#+  +:+       +#+        */
+/*   By: beyarsla <beyarsla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/16 18:07:42 by kgulfida          #+#    #+#             */
-/*   Updated: 2025/04/12 18:01:55 by ayirmili         ###   ########.fr       */
+/*   Created: 2025/04/14 16:40:45 by beyarsla          #+#    #+#             */
+/*   Updated: 2025/04/14 16:40:46 by beyarsla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

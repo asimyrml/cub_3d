@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_images.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayirmili <ayirmili@student.42.fr>          +#+  +:+       +#+        */
+/*   By: beyarsla <beyarsla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/06 12:13:48 by kgulfida          #+#    #+#             */
-/*   Updated: 2025/04/12 19:38:32 by ayirmili         ###   ########.fr       */
+/*   Created: 2025/04/14 16:46:20 by beyarsla          #+#    #+#             */
+/*   Updated: 2025/04/14 16:46:22 by beyarsla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,6 @@ int	put_image(t_data *data)
 	calculate_rays(data, 0, 0, 0);
 	mlx_put_image_to_window(data->game->mlx, data->game->wndw,
 		data->game->image, 0, 0);
-	move_player(data);
+	handle_move_player(data);
 	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayirmili <ayirmili@student.42.fr>          +#+  +:+       +#+        */
+/*   By: beyarsla <beyarsla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/21 18:23:31 by amayuk            #+#    #+#             */
-/*   Updated: 2025/04/12 19:38:32 by ayirmili         ###   ########.fr       */
+/*   Created: 2025/04/14 16:44:50 by beyarsla          #+#    #+#             */
+/*   Updated: 2025/04/14 16:44:51 by beyarsla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,8 @@ void	start_game(t_data *data)
 {
 	create_window(data);
 	mlx_loop_hook(data->game->mlx, put_image, data);
-	mlx_hook(data->game->wndw, 2, 1L << 0, key_press, data);
-	mlx_hook(data->game->wndw, 3, 1L << 1, key_release, data);
+	mlx_hook(data->game->wndw, 2, 1L << 0, handle_keys, data);
+	mlx_hook(data->game->wndw, 3, 1L << 1, reset_keys, data);
 	mlx_hook(data->game->wndw, 17, 0, close_window, data);
 	mlx_loop(data->game->mlx);
 }

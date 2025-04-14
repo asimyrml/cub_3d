@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   handle_direction.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayirmili <ayirmili@student.42.fr>          +#+  +:+       +#+        */
+/*   By: beyarsla <beyarsla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/06 12:13:54 by kgulfida          #+#    #+#             */
-/*   Updated: 2025/04/12 19:34:46 by ayirmili         ###   ########.fr       */
+/*   Created: 2025/04/14 16:46:04 by beyarsla          #+#    #+#             */
+/*   Updated: 2025/04/14 16:46:07 by beyarsla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../lib/cub3d.h"
 
-void	look_left(t_data *data)
+void	handle_left_view(t_data *data)
 {
 	double	old_dir_x;
 	double	old_plane_x;
@@ -30,7 +30,7 @@ void	look_left(t_data *data)
 		+ data->player->view_y * cos(-data->game->turn_speed);
 }
 
-void	look_right(t_data *data)
+void	handle_right_view(t_data *data)
 {
 	double	old_dir_x;
 	double	old_plane_x;

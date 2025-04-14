@@ -3,34 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   player_position.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayirmili <ayirmili@student.42.fr>          +#+  +:+       +#+        */
+/*   By: beyarsla <beyarsla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/06 12:14:04 by kgulfida          #+#    #+#             */
-/*   Updated: 2025/04/12 20:12:16 by ayirmili         ###   ########.fr       */
+/*   Created: 2025/04/14 16:45:19 by beyarsla          #+#    #+#             */
+/*   Updated: 2025/04/14 16:45:22 by beyarsla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../lib/cub3d.h"
 
-void	player_direction_2(char direction, t_data *data)
+void	player_dir_we(char direction, t_data *data)
 {
-	if (direction == 'E')
-	{
-		data->player->direction_x = 1;
-		data->player->direction_y = 0;
-		data->player->view_x = 0;
-		data->player->view_y = 0.66;
-	}
-	else if (direction == 'W')
+	if (direction == 'W')
 	{
 		data->player->direction_x = -1;
 		data->player->direction_y = 0;
 		data->player->view_x = 0;
 		data->player->view_y = -0.66;
 	}
+	else if (direction == 'E')
+	{
+		data->player->direction_x = 1;
+		data->player->direction_y = 0;
+		data->player->view_x = 0;
+		data->player->view_y = 0.66;
+	}
 }
 
-void	player_direction(char direction, t_data *data)
+void	player_dir_ns(char direction, t_data *data)
 {
 	if (direction == 'N')
 	{
@@ -47,7 +47,7 @@ void	player_direction(char direction, t_data *data)
 		data->player->view_y = 0;
 	}
 	else
-		player_direction_2(direction, data);
+		player_dir_we(direction, data);
 }
 
 void	find_player(t_data *data)
@@ -67,7 +67,7 @@ void	find_player(t_data *data)
 				data->player->position_x = j + 0.5;
 				data->player->position_y = i + 0.5;
 				check_player_bounds(data, i, j);
-				player_direction(data->map->map[i][j], data);
+				player_dir_ns(data->map->map[i][j], data);
 			}
 		}
 	}
@@ -97,7 +97,7 @@ void	player_check(t_data *data)
 	find_player(data);
 }
 
-void	char_check(t_data *data)
+void	check_char(t_data *data)
 {
 	int	i;
 	int	j;

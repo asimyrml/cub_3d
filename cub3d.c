@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayirmili <ayirmili@student.42.fr>          +#+  +:+       +#+        */
+/*   By: beyarsla <beyarsla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/02 12:06:46 by kgulfida          #+#    #+#             */
-/*   Updated: 2025/04/12 20:13:42 by ayirmili         ###   ########.fr       */
+/*   Created: 2025/04/14 16:46:34 by beyarsla          #+#    #+#             */
+/*   Updated: 2025/04/14 16:46:36 by beyarsla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ void	av_check(char *av)
 	}
 	close(fd);
 	len = ft_strlen(av);
-	if (av[len - 1] != 'b' || av[len - 2] != 'u' || av[len - 3] != 'c' || \
-		av[len - 4] != '.')
+	if (av[len - 1] != 'b' || av[len - 2] != 'u' || av[len - 3] != 'c' || av[len
+			- 4] != '.')
 	{
 		write(2, "Error\nThe file is not '.cub' extension.\n", 41);
 		exit(1);
@@ -63,10 +63,10 @@ int	main(int ac, char **av)
 	}
 	av_check(av[1]);
 	init_data(&data);
-	textures_check(av[1], &data);
-	textures_check_2(av[1], &data, 0);
+	txt_check(av[1], &data);
+	txt_check_2(av[1], &data, 0);
 	map_check(av[1], &data, NULL, NULL);
-	char_check(&data);
+	check_char(&data);
 	check_floodfill(&data);
 	is_map_closed(&data);
 	start_game(&data);

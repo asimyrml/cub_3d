@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   rgb_validator.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayirmili <ayirmili@student.42.fr>          +#+  +:+       +#+        */
+/*   By: beyarsla <beyarsla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/10 23:06:52 by amayuk            #+#    #+#             */
-/*   Updated: 2025/04/12 19:44:26 by ayirmili         ###   ########.fr       */
+/*   Created: 2025/04/14 16:45:25 by beyarsla          #+#    #+#             */
+/*   Updated: 2025/04/14 16:45:27 by beyarsla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../lib/cub3d.h"
 
-int	number_check(char **rgb_i, char **control, int num, t_data *data)
+int	rgb_num_check(char **rgb_i, char **control, int num, t_data *data)
 {
 	if (num < 0 || num > 255 || ft_strncmp(*rgb_i, *control,
 			ft_strlen(*control)))
@@ -45,7 +45,7 @@ int	rgb_validate(char **rgb, int i, int j, t_data *data)
 			return (1);
 		num = ft_atoi(rgb[i]);
 		control = ft_itoa(num);
-		flag = number_check(&rgb_i, &control, num, data);
+		flag = rgb_num_check(&rgb_i, &control, num, data);
 		if (flag)
 			return (1);
 		i++;
@@ -53,7 +53,7 @@ int	rgb_validate(char **rgb, int i, int j, t_data *data)
 	return (0);
 }
 
-int	color_line_component_count(char **str, t_data *data)
+int	ensure_rgb_triplet(char **str, t_data *data)
 {
 	int	i;
 
@@ -68,7 +68,7 @@ int	color_line_component_count(char **str, t_data *data)
 	return (0);
 }
 
-int	color_comma_count(char *str, t_data *data)
+int	ensure_rgb_comma(char *str, t_data *data)
 {
 	int	i;
 	int	c_count;
@@ -95,8 +95,8 @@ int	color_line_check(char *str, t_data *data)
 	{
 		if (data->texture->txt_floor == NULL)
 			data->texture->txt_floor = ft_split(str + 2, ',');
-		if (color_comma_count(str, data)
-			|| color_line_component_count(data->texture->txt_floor, data)
+		if (ensure_rgb_comma(str, data)
+			|| ensure_rgb_triplet(data->texture->txt_floor, data)
 			|| rgb_validate(data->texture->txt_floor, 0, 0, data))
 			return (1);
 	}
@@ -104,8 +104,8 @@ int	color_line_check(char *str, t_data *data)
 	{
 		if (data->texture->txt_ceiling == NULL)
 			data->texture->txt_ceiling = ft_split(str + 2, ',');
-		if (color_comma_count(str, data)
-			|| color_line_component_count(data->texture->txt_ceiling, data)
+		if (ensure_rgb_comma(str, data)
+			|| ensure_rgb_triplet(data->texture->txt_ceiling, data)
 			|| rgb_validate(data->texture->txt_ceiling, 0, 0, data))
 			return (1);
 	}

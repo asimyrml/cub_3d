@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayirmili <ayirmili@student.42.fr>          +#+  +:+       +#+        */
+/*   By: beyarsla <beyarsla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/06 12:13:44 by kgulfida          #+#    #+#             */
-/*   Updated: 2025/04/12 19:34:21 by ayirmili         ###   ########.fr       */
+/*   Created: 2025/04/14 16:45:44 by beyarsla          #+#    #+#             */
+/*   Updated: 2025/04/14 16:45:45 by beyarsla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../lib/cub3d.h"
 
-void	move_up(t_data *data)
+void	handle_move_up(t_data *data)
 {
 	double	x;
 	double	y;
@@ -27,7 +27,7 @@ void	move_up(t_data *data)
 		data->player->position_y = y;
 }
 
-void	move_down(t_data *data)
+void	handle_move_down(t_data *data)
 {
 	double	x;
 	double	y;
@@ -42,7 +42,7 @@ void	move_down(t_data *data)
 		data->player->position_y = y;
 }
 
-void	move_left(t_data *data)
+void	handle_move_left(t_data *data)
 {
 	double	x;
 	double	y;
@@ -57,7 +57,7 @@ void	move_left(t_data *data)
 		data->player->position_y = y;
 }
 
-void	move_right(t_data *data)
+void	handle_move_right(t_data *data)
 {
 	double	x;
 	double	y;
@@ -72,18 +72,18 @@ void	move_right(t_data *data)
 		data->player->position_y = y;
 }
 
-void	move_player(t_data *data)
+void	handle_move_player(t_data *data)
 {
 	if (data->key->key_w)
-		move_up(data);
+		handle_move_up(data);
 	if (data->key->key_s)
-		move_down(data);
+		handle_move_down(data);
 	if (data->key->key_a)
-		move_left(data);
+		handle_move_left(data);
 	if (data->key->key_d)
-		move_right(data);
+		handle_move_right(data);
 	if (data->key->key_right)
-		look_right(data);
+		handle_right_view(data);
 	if (data->key->key_left)
-		look_left(data);
+		handle_left_view(data);
 }

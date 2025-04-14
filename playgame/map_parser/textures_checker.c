@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   textures_checker.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayirmili <ayirmili@student.42.fr>          +#+  +:+       +#+        */
+/*   By: beyarsla <beyarsla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/02 12:06:52 by kgulfida          #+#    #+#             */
-/*   Updated: 2025/04/12 19:50:00 by ayirmili         ###   ########.fr       */
+/*   Created: 2025/04/14 16:45:29 by beyarsla          #+#    #+#             */
+/*   Updated: 2025/04/14 16:45:30 by beyarsla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../lib/cub3d.h"
 
-void	texture_count(char *trimmed, t_data *data)
+void	txt_count(char *trimmed, t_data *data)
 {
 	if (trimmed[0] == 'N' && trimmed[1] == 'O' && trimmed[2] == ' ')
 		data->parse->parse_no++;
@@ -28,7 +28,7 @@ void	texture_count(char *trimmed, t_data *data)
 		data->parse->parse_f++;
 }
 
-void	texture_count_check(t_data *data)
+void	txt_count_check(t_data *data)
 {
 	if (data->parse->parse_no != 1 || data->parse->parse_so != 1
 		|| data->parse->parse_we != 1 || data->parse->parse_ea != 1
@@ -40,11 +40,11 @@ void	free_gnl(int fd, char **trimmed, char **line)
 {
 	free(*line);
 	free(*trimmed);
-	finish_gnl(fd);
+	free_getnextline(fd);
 	exit(1);
 }
 
-void	textures_check_2(char *av, t_data *data, int fd)
+void	txt_check_2(char *av, t_data *data, int fd)
 {
 	char	*line;
 
@@ -57,12 +57,12 @@ void	textures_check_2(char *av, t_data *data, int fd)
 		line = get_next_line(fd);
 		if (line == NULL)
 			break ;
-		process_line(line, data, fd);
+		handle_lines(line, data, fd);
 	}
 	close(fd);
 }
 
-void	textures_check(char *av, t_data *data)
+void	txt_check(char *av, t_data *data)
 {
 	char	*line;
 	char	*trimmed;
@@ -83,10 +83,10 @@ void	textures_check(char *av, t_data *data)
 			ft_texture_error("Error\nThe map error.\n", data);
 			free_gnl(fd, &trimmed, &line);
 		}
-		texture_count(trimmed, data);
+		txt_count(trimmed, data);
 		free(line);
 		free(trimmed);
 	}
 	close(fd);
-	texture_count_check(data);
+	txt_count_check(data);
 }

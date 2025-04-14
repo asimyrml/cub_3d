@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_reader.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayirmili <ayirmili@student.42.fr>          +#+  +:+       +#+        */
+/*   By: beyarsla <beyarsla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/15 15:20:17 by kgulfida          #+#    #+#             */
-/*   Updated: 2025/04/12 20:13:42 by ayirmili         ###   ########.fr       */
+/*   Created: 2025/04/14 16:45:10 by beyarsla          #+#    #+#             */
+/*   Updated: 2025/04/14 16:45:11 by beyarsla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ void	mltp_map_checker(int fd, t_data *data)
 			break ;
 		if (ft_strncmp(line, " ", ft_strlen(line)) != 0 || *line == '\n')
 			flg = 1;
-		if (flg && check_c(line))
+		if (flg && check_lines(line))
 			ft_error("Error\nMultiple map.\n", data);
 		free(line);
 	}

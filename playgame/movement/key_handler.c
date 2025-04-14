@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_handler.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayirmili <ayirmili@student.42.fr>          +#+  +:+       +#+        */
+/*   By: beyarsla <beyarsla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/06 12:13:39 by kgulfida          #+#    #+#             */
-/*   Updated: 2025/04/12 18:40:31 by ayirmili         ###   ########.fr       */
+/*   Created: 2025/04/14 16:45:40 by beyarsla          #+#    #+#             */
+/*   Updated: 2025/04/14 16:45:42 by beyarsla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	destroy_mlx(t_data *data)
 	}
 }
 
-int	key_press(int key_code, t_data *data)
+int	handle_keys(int key_code, t_data *data)
 {
 	if (key_code == 65307)
 	{
@@ -64,7 +64,7 @@ int	key_press(int key_code, t_data *data)
 	return (0);
 }
 
-int	key_release(int key, t_data *data)
+int	reset_keys(int key, t_data *data)
 {
 	if (key == 119)
 		data->key->key_w = 0;

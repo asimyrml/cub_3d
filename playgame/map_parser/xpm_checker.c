@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   xpm_checker.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayirmili <ayirmili@student.42.fr>          +#+  +:+       +#+        */
+/*   By: beyarsla <beyarsla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/06 12:14:14 by kgulfida          #+#    #+#             */
-/*   Updated: 2025/04/12 19:33:41 by ayirmili         ###   ########.fr       */
+/*   Created: 2025/04/14 16:45:33 by beyarsla          #+#    #+#             */
+/*   Updated: 2025/04/14 16:45:35 by beyarsla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../lib/cub3d.h"
 
-static int	xpm_extension_check(char *texture, t_data *data)
+static int	check_xpm_file_validity(char *texture, t_data *data)
 {
 	int	fd;
 	int	len;
@@ -31,8 +31,8 @@ static int	xpm_extension_check(char *texture, t_data *data)
 		return (1);
 	}
 	len = ft_strlen(texture);
-	if (texture[len - 1] != 'm' || texture[len - 2] != 'p' || \
-		texture[len - 3] != 'x' || texture[len - 4] != '.')
+	if (texture[len - 1] != 'm' || texture[len - 2] != 'p' || texture[len
+			- 3] != 'x' || texture[len - 4] != '.')
 	{
 		ft_texture_error("Error\nTexture file must have a .xpm extension.\n",
 			data);
@@ -49,7 +49,7 @@ static int	xpm_check_2(char *str, t_data *data)
 		while (str && *str == ' ')
 			str++;
 		data->texture->txt_west = ft_strdup(str);
-		return (xpm_extension_check(data->texture->txt_west, data));
+		return (check_xpm_file_validity(data->texture->txt_west, data));
 	}
 	else if (str[0] == 'E' && str[1] == 'A')
 	{
@@ -57,7 +57,7 @@ static int	xpm_check_2(char *str, t_data *data)
 		while (str && *str == ' ')
 			str++;
 		data->texture->txt_east = ft_strdup(str);
-		return (xpm_extension_check(data->texture->txt_east, data));
+		return (check_xpm_file_validity(data->texture->txt_east, data));
 	}
 	return (0);
 }
@@ -73,7 +73,7 @@ int	xpm_check(char *str, t_data *data)
 		while (str && *str == ' ')
 			str++;
 		data->texture->txt_north = ft_strdup(str);
-		flag = xpm_extension_check(data->texture->txt_north, data);
+		flag = check_xpm_file_validity(data->texture->txt_north, data);
 	}
 	else if (str[0] == 'S' && str[1] == 'O')
 	{
@@ -81,7 +81,7 @@ int	xpm_check(char *str, t_data *data)
 		while (str && *str == ' ')
 			str++;
 		data->texture->txt_south = ft_strdup(str);
-		flag = xpm_extension_check(data->texture->txt_south, data);
+		flag = check_xpm_file_validity(data->texture->txt_south, data);
 	}
 	if (flag)
 		return (1);

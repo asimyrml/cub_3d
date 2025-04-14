@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayirmili <ayirmili@student.42.fr>          +#+  +:+       +#+        */
+/*   By: beyarsla <beyarsla@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/12 18:04:30 by ayirmili          #+#    #+#             */
-/*   Updated: 2025/04/12 20:13:42 by ayirmili         ###   ########.fr       */
+/*   Created: 2025/04/14 16:44:35 by beyarsla          #+#    #+#             */
+/*   Updated: 2025/04/14 16:44:36 by beyarsla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,14 +134,14 @@ void				init_map(t_data *data);
 void				init_key(t_data *data);
 void				init_game(t_data *data);
 
-void				textures_check(char *av, t_data *data);
-void				textures_check_2(char *av, t_data *data, int fd);
+void				txt_check(char *av, t_data *data);
+void				txt_check_2(char *av, t_data *data, int fd);
 int					xpm_check(char *str, t_data *data);
 int					color_line_check(char *str, t_data *data);
 void				map_check(char *av, t_data *data, char *line,
 						char *trimmed);
-int					check_c(char *line);
-void				char_check(t_data *data);
+int					check_lines(char *line);
+void				check_char(t_data *data);
 void				bounds_check(t_data *data, int i, int j);
 void				check_player_bounds(t_data *data, int i, int j);
 void				check_fields(t_data *data, int i);
@@ -156,19 +156,19 @@ void				check_left_space(t_data *data, int i);
 
 void				start_game(t_data *data);
 int					put_image(t_data *data);
-int					key_press(int key_code, t_data *data);
-int					key_release(int key, t_data *data);
+int					handle_keys(int key_code, t_data *data);
+int					reset_keys(int key, t_data *data);
 void				set_variable(t_data *data, int i);
 void				calculate_step(t_data *data);
 int					dda_algorithm(t_data *data);
 void				set_pixel(t_data *data, int line_h, int side);
 void				put_col(t_data *data, int col, int side);
-void				move_up(t_data *data);
-void				move_down(t_data *data);
-void				move_left(t_data *data);
-void				move_right(t_data *data);
-void				look_right(t_data *data);
-void				look_left(t_data *data);
+void				handle_move_up(t_data *data);
+void				handle_move_down(t_data *data);
+void				handle_move_left(t_data *data);
+void				handle_move_right(t_data *data);
+void				handle_right_view(t_data *data);
+void				handle_left_view(t_data *data);
 
 void				ft_malloc_error(char *msg, t_data *data);
 void				ft_texture_error(char *msg, t_data *data);
@@ -177,12 +177,12 @@ void				ft_error(char *msg, t_data *data);
 void				destroy_mlx(t_data *data);
 void				ft_full_free(t_data *data);
 void				double_free(char **str);
-void				finish_gnl(int fd);
-void				move_player(t_data *data);
+void				free_getnextline(int fd);
+void				handle_move_player(t_data *data);
 char				*check_is_digit_and_trim(char *rgb_part, t_data *data);
-void				process_line(char *line, t_data *data, int fd);
-void				texture_count_check(t_data *data);
+void				handle_lines(char *line, t_data *data, int fd);
+void				txt_count_check(t_data *data);
 void				free_gnl(int fd, char **trimmed, char **line);
-void				texture_count(char *trimmed, t_data *data);
+void				txt_count(char *trimmed, t_data *data);
 
 #endif
