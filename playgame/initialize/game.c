@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: beyarsla <beyarsla@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ayirmili <ayirmili@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 16:44:50 by beyarsla          #+#    #+#             */
-/*   Updated: 2025/04/14 16:44:51 by beyarsla         ###   ########.fr       */
+/*   Updated: 2025/04/16 19:15:22 by ayirmili         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	set_address(t_data *data)
 			&data->game->byte_order);
 	if (!data->game->address_ea || !data->game->address_we
 		|| !data->game->address_so || !data->game->address_no)
-		ft_error("Error:\nTextures' address creation failed.\n", data);
+		ft_error("Error\nTextures' address creation failed.\n", data);
 }
 
 void	load_textures(t_data *data)
@@ -43,7 +43,7 @@ void	load_textures(t_data *data)
 			data->texture->txt_east, &data->game->size, &data->game->size);
 	if (!data->game->game_no || !data->game->game_so || !data->game->game_ea
 		|| !data->game->game_we)
-		ft_error("Error:\nMissing image file or texture creation failed.",
+		ft_error("Error\nMissing image file or texture creation failed.",
 			data);
 	set_address(data);
 }

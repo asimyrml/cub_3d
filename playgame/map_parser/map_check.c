@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_check.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: beyarsla <beyarsla@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ayirmili <ayirmili@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 16:45:06 by beyarsla          #+#    #+#             */
-/*   Updated: 2025/04/14 16:45:07 by beyarsla         ###   ########.fr       */
+/*   Updated: 2025/04/16 19:15:22 by ayirmili         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	check_map_edges(t_data *data)
 	{
 		if (data->map->map[0][i] != '1' && data->map->map[0][i] != '\n'
 			&& data->map->map[0][i] != ' ' && data->map->map[0][i] != '\t')
-			ft_error("Error:\nThe map error.\n", data);
+			ft_error("Error\nThe map error.\n", data);
 		i++;
 	}
 	i = 0;
@@ -32,7 +32,7 @@ void	check_map_edges(t_data *data)
 			&& data->map->map[data->map->row - 1][i] != ' '
 			&& data->map->map[data->map->row - 1][i] != '\t'
 			&& data->map->map[data->map->row - 1][i] != '\0')
-			ft_error("Error:\nThe map error.\n", data);
+			ft_error("Error\nThe map error.\n", data);
 		i++;
 	}
 }
@@ -59,7 +59,7 @@ void	check_above_space(t_data *data, int map_row)
 					continue ;
 				}
 				else if (data->map->map[ctr][j] != '1')
-					ft_error("Error:\nThe map error.1\n", data);
+					ft_error("Error\nThe map error.\n", data);
 			}
 			j++;
 		}
@@ -88,7 +88,7 @@ void	check_under_space(t_data *data, int i, int row)
 					continue ;
 				}
 				else if (data->map->map[ctr][j] != '1')
-					ft_error("Error:\nThe map error.2\n", data);
+					ft_error("Error\nThe map error.\n", data);
 			}
 			j++;
 		}
@@ -118,7 +118,7 @@ void	check_right_space(t_data *data, int i)
 					continue ;
 				}
 				else if (data->map->map[i][ctr] != '1')
-					ft_error("Error:\nThe map error.3\n", data);
+					ft_error("Error\nThe map error.\n", data);
 			}
 		}
 	}
@@ -146,7 +146,7 @@ void	check_left_space(t_data *data, int i)
 					continue ;
 				}
 				else if (data->map->map[i][control] != '1')
-					ft_error("Error:\nThe map error.4\n", data);
+					ft_error("Error\nThe map error.\n", data);
 			}
 			j--;
 		}
